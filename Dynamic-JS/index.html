@@ -1,1 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Retro Tic-Tac-Toe</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <!--Import custom Arcade-style font-->
+        <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+        <link rel="stylesheet" media="screen" href="dynamicJS.css">
+    </head>
+    <body>
+        <h1>Welcome to Retro Tic-Tac-Toe!</h1>
+        <h2>The inspiration behind this was Tron and arcades from the 1980's.</h2>
 
+        <!--Select statement wrapped in span in order to manipulate via CSS-->
+        <div class="container" id="main">
+            <span id="turn">Select any box to begin</span>
+            <div class="box" id="box1"></div>
+            <div class="box" id="box2"></div>
+            <div class="box" id="box3"></div>
+            <div class="box" id="box4"></div>
+            <div class="box" id="box5"></div>
+            <div class="box" id="box6"></div>
+            <div class="box" id="box7"></div>
+            <div class="box" id="box8"></div>
+            <div class="box" id="box9"></div>
+        </div>
+
+        <!--Calls the replay method in the JS file when user clicks play again button-->
+        <button onclick="replay()" id="playAgain">Play Again</button>
+
+        <script type="text/javascript" src="dynamicJS.js"></script>
+    </body>
+</html>
