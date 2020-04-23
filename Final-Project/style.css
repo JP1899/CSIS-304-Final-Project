@@ -1,0 +1,226 @@
+/*#weather-container {
+    background: lightblue;
+    text-align: center;
+    color: white;
+    text-shadow: #000 0px 0px 1px,   #000 0px 0px 1px,   #000 0px 0px 1px,
+                 #000 0px 0px 1px,   #000 0px 0px 1px,   #000 0px 0px 1px;
+}
+#icon {
+    height: 50px;
+    width: 50px;
+}
+#city {
+    font-size: 50px;
+}
+#weather {
+    font-size: 40px;
+    margin: 0;
+    font-weight: bold;
+}
+#temp {
+    font-size: 40px;
+    margin: 0;
+    font-weight: bold;
+}
+header {
+    background-image: url('https://wallpaperaccess.com/full/184531.jpg');
+}
+body {
+    background-image: url('https://wallpaperaccess.com/full/184531.jpg');
+}
+*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'montserrat', sans-serif;
+    color: white;
+    background-image: url("https://wallpaperaccess.com/full/184531.jpg");
+    background-size: cover;
+    background-position: top center;
+}
+
+.weather-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.6));
+    }
+      
+    header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px 15px 15px;
+}
+::placeholder {
+    color: white;
+}
+
+header label {
+
+    font-size: 20px;
+    font-weight: 300;
+    padding: 10px 15px;
+    transition: 0.2s ease-out;
+    padding-left: 15px;
+    padding-right: 5px;
+    /*background-color: rgba(255, 255, 255, 0.3);*/
+    text-shadow: #000 0px 0px 1px,   #000 0px 0px 1px,   #000 0px 0px 1px,
+    #000 0px 0px 1px,   #000 0px 0px 1px,   #000 0px 0px 1px;
+}
+
+header select {
+    font-size: 20px;
+    font-weight: 300;
+    padding: 10px 15px;
+    transition: 0.2s ease-out;
+    padding-left: 15px;
+    padding-right: 5px;
+    background-color: rgba(255, 255, 255, 0.3);
+    border-bottom: 3px solid #DF8E00;
+    /*text-shadow: #000 0px 0px 1px,   #000 0px 0px 1px,   #000 0px 0px 1px,
+    #000 0px 0px 1px,   #000 0px 0px 1px,   #000 0px 0px 1px;*/
+    color: black;
+}
+
+header input {
+    width: 100%;
+    max-width: 280px;
+    padding: 10px 15px;
+    border: none;
+    outline: none;
+    background-color: rgba(255, 255, 255, 0.3);
+    color: white;
+    border-bottom: 3px solid #DF8E00;
+    font-size: 20px;
+    font-weight: 300;
+    transition: 0.2s ease-out;
+}
+
+header input:focus {
+    background-color: rgba(255, 255, 255, 0.6);
+}
+
+main {
+    flex: 1 1 100%;
+    padding: 25px 25px 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.location .city {
+    color: whitesmoke;
+    font-size: 40px;
+    font-weight: bolder;
+    margin-bottom: 5px;
+}
+
+.location .date {
+    color: whitesmoke;
+    font-size: 34px;
+}
+
+.current .temp {
+    color: whitesmoke;
+    font-size: 100px;
+    font-weight: 900;
+    margin: 20px 0px;
+    text-shadow: 2px 8px black;
+}
+
+/*Remove the span if remove this*/
+/*.current .temp span {
+    font-weight: 500;
+}*/
+
+.current .weather {
+    color: whitesmoke;
+    font-size: 35px;
+    font-weight: 600;
+    font-style: italic;
+    margin-bottom: 15px;
+    text-shadow: 0px 3px black;
+}
+
+.current .hi-low {
+    color: whitesmoke;
+    font-size: 24px;
+    font-weight: 500;
+    text-shadow: 0px 4px rgba(0, 0, 0, 0.4);
+}
+
+.current .humidity {
+    padding-top: 5px;
+    color: whitesmoke;
+    font-size: 24px;
+    font-weight: 500;
+    text-shadow: 0px 4px rgba(0, 0, 0, 0.4);
+}
+
+/*------------------------------------------------*/
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+  
+/* Modal Content */
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    color: black;
+    text-align: center;
+}
+  
+/* The Close Button */
+.close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    text-align: right;
+}
+  
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#myBtn {
+    font-size: 20px;
+    font-weight: 300;
+    padding: 10px 15px;
+    transition: 0.2s ease-out;
+    padding-left: 5px;
+    padding-right: 5px;
+    margin-left: 50px;
+    background-color: rgba(255, 255, 255, 0.3);
+    border-bottom: 3px solid #DF8E00;
+    /*text-shadow: #000 0px 0px 1px,   #000 0px 0px 1px,   #000 0px 0px 1px,
+    #000 0px 0px 1px,   #000 0px 0px 1px,   #000 0px 0px 1px;*/
+    color: white;
+}
+
+.container {
+    margin-top: 15px;
+}
