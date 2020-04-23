@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <title>Weather!</title>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="style.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+    </head>
+
+    <body>
+        <!--<p id="city"></p>
+        <img id="icon">
+        <p id="weather"></p>
+        <p id="temp"></p>
+        </div>-->
+        <div class="weather-container">
+            <header>
+                <input type="text" autocomplete="off" class="search-box" placeholder="Search for a City...">
+                <!--Not putting every country because they would ideally be in a database
+                <label for "Country">Select Country:</label>
+                <select id="Country" name="Country">
+                    <option value="us">United States</option>
+                    <option value="au">Australia</option>
+                    <option value="ca">Canada</option>
+                    <option value="gb">United Kingdom</option>
+                    <option value="jp">Japan</option>
+                    <option value="de">Germany</option>
+                </select>-->
+                
+                <!-- Trigger/Open The Modal -->
+                <button id="myBtn">Search Help</button>
+
+                <!-- The Modal -->
+                <div id="myModal" class="modal">
+
+                <!-- Modal content -->
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                <p>If the wrong country appears, try typing the name of the city followed by a comma and the country code. (Ex: Boston, us)</p>
+            
+            </header>
+            <main>
+                <section class="location">
+                    <div class="city">Newberg, US</div>
+                    <div class="date">Monday, April 20, 2020</div>
+                </section>
+                <div class="current">
+                    <div class="temp">70<span>°F</span></div>
+                    <div class="weather">Sunny</div>
+                    <div class="hi_low">45°F / 70°F</div>
+                    <div class="humidity">Humidity: 43%</div>
+            </main>
+
+            <div class="container">
+                <canvas id="myChart"></canvas>
+            </div>
+        
+        <script src="script.js"></script>
+    </body>
+</html>
