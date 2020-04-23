@@ -98,4 +98,3 @@ function getWinner()
             turn.innerHTML = "Select any box to begin";
         }
     }
-© 2020 GitHub, Inc.
