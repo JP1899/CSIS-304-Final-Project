@@ -1,34 +1,3 @@
-/*#weather-container {
-    background: lightblue;
-    text-align: center;
-    color: white;
-    text-shadow: #000 0px 0px 1px,   #000 0px 0px 1px,   #000 0px 0px 1px,
-                 #000 0px 0px 1px,   #000 0px 0px 1px,   #000 0px 0px 1px;
-}
-#icon {
-    height: 50px;
-    width: 50px;
-}
-#city {
-    font-size: 50px;
-}
-#weather {
-    font-size: 40px;
-    margin: 0;
-    font-weight: bold;
-}
-#temp {
-    font-size: 40px;
-    margin: 0;
-    font-weight: bold;
-}
-header {
-    background-image: url('https://wallpaperaccess.com/full/184531.jpg');
-}
-body {
-    background-image: url('https://wallpaperaccess.com/full/184531.jpg');
-}
-*/
 * {
     margin: 0;
     padding: 0;
@@ -68,7 +37,6 @@ header label {
     transition: 0.2s ease-out;
     padding-left: 15px;
     padding-right: 5px;
-    /*background-color: rgba(255, 255, 255, 0.3);*/
     text-shadow: #000 0px 0px 1px,   #000 0px 0px 1px,   #000 0px 0px 1px,
     #000 0px 0px 1px,   #000 0px 0px 1px,   #000 0px 0px 1px;
 }
@@ -82,8 +50,6 @@ header select {
     padding-right: 5px;
     background-color: rgba(255, 255, 255, 0.3);
     border-bottom: 3px solid #DF8E00;
-    /*text-shadow: #000 0px 0px 1px,   #000 0px 0px 1px,   #000 0px 0px 1px,
-    #000 0px 0px 1px,   #000 0px 0px 1px,   #000 0px 0px 1px;*/
     color: black;
 }
 
@@ -134,11 +100,6 @@ main {
     text-shadow: 2px 8px black;
 }
 
-/*Remove the span if remove this*/
-/*.current .temp span {
-    font-weight: 500;
-}*/
-
 .current .weather {
     color: whitesmoke;
     font-size: 35px;
@@ -148,7 +109,7 @@ main {
     text-shadow: 0px 3px black;
 }
 
-.current .hi-low {
+.current .hi_low {
     color: whitesmoke;
     font-size: 24px;
     font-weight: 500;
@@ -156,15 +117,14 @@ main {
 }
 
 .current .humidity {
-    padding-top: 5px;
+    padding-top: 15px;
     color: whitesmoke;
     font-size: 24px;
     font-weight: 500;
     text-shadow: 0px 4px rgba(0, 0, 0, 0.4);
 }
 
-/*------------------------------------------------*/
-/* The Modal (background) */
+/* Modal box background - Adapted from W3Schools */
 .modal {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
@@ -179,7 +139,7 @@ main {
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
   
-/* Modal Content */
+/* Modal Content - Adapted from W3Schools */
 .modal-content {
     background-color: #fefefe;
     margin: auto;
@@ -190,7 +150,7 @@ main {
     text-align: center;
 }
   
-/* The Close Button */
+/* The Close Button - Adapted from W3Schools */
 .close {
     color: #aaaaaa;
     float: right;
@@ -216,8 +176,6 @@ main {
     margin-left: 50px;
     background-color: rgba(255, 255, 255, 0.3);
     border-bottom: 3px solid #DF8E00;
-    /*text-shadow: #000 0px 0px 1px,   #000 0px 0px 1px,   #000 0px 0px 1px,
-    #000 0px 0px 1px,   #000 0px 0px 1px,   #000 0px 0px 1px;*/
     color: white;
 }
 
