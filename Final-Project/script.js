@@ -1,25 +1,21 @@
-
-
+// selects the search-box html element and adds a keypress event listener
 const searchbox = document.querySelector('.search-box');
 searchbox.addEventListener('keypress', sendLocation);
 
-// if enter key is pressed, call getResults function
+// if the enter key is pressed, call getResults function
+// send getResults city name passed into searchbox
 function sendLocation(event)
 {
     if (event.keyCode == 13)
     {
         getResults(searchbox.value);
-        console.log(searchbox.value);
     }
 }
 
 // function takes value user enters in text box
 // and seaches API to get back JSON results for temp, weather, etc.
-// TODO ??need to convert the text to JSON??
 function getResults(textboxValue)
 {
-    console.log("Load the data via ajax");
-
     //Make the ajax request
     $.ajax({
         url: "https://api.openweathermap.org/data/2.5/weather?q=" + textboxValue + "&units=imperial&APPID=46a12c94ae0536aadb76d326ffa08d91",
@@ -29,21 +25,19 @@ function getResults(textboxValue)
     });
 }
 
-
 // take JSON data givven to function and assign it to correct spot on webpage
+// Watched this tutorial on template literals which helped to streamline this process
+// https://www.youtube.com/watch?v=Re2FAmbNV8g&t=198s
 function displayResults(weather)
 {
 
     for (i in weather)
     {
-        //console.log(i);
-        //console.log(weather.name);
         var cityName = document.querySelector('.location .city');
-        cityName.innerText = `${weather.name}, ${weather.sys.country}`; //https://www.youtube.com/watch?v=Re2FAmbNV8g&t=198s
+        cityName.innerText = `${weather.name}, ${weather.sys.country}`;
 
         var temp = document.querySelector('.current .temp');
         temp.innerText = `${Math.floor(weather.main.temp)}°F`;
-        //temp.append(Math.floor(weather.main.temp) + "°F");
 
         var currWeather = document.querySelector('.current .weather');
         currWeather.innerText = weather.weather[0].description;
@@ -54,41 +48,43 @@ function displayResults(weather)
         var humidity = document.querySelector('.humidity');
         humidity.innerText = `Humidity: ${weather.main.humidity}%`;
 
+        // got current date using JS Date built-in function
+        // assigned to currentDate via let for use in this function
+        // sent currentDate value to getDate method
         let currentDate = new Date();
         let date = document.querySelector('.location .date');
         date.innerText = getDate(currentDate);
     }
 
-    function getDate(d)
+    // Take data recieved and turn into format needed
+    // return string to update page
+    function getDate(currentDateData)
     {
         let months = ["January", "February", "March", "April", "May", "June", "July", "August", 
         "September", "October", "November", "December"];
 
         let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
-        let day = days[d.getDay()];
-        let month = months[d.getMonth()];
-        let date = d.getDate();
-        let year = d.getFullYear();
+        let day = days[currentDateData.getDay()];
+        let month = months[currentDateData.getMonth()];
+        let date = currentDateData.getDate();
+        let year = currentDateData.getFullYear();
 
         return `${day}, ${month} ${date}, ${year}`;
     }
-    //console.log("Show the weather" + weather);
 
-
-var currentTemp = Math.floor(weather.main.temp);
-var minimumTemp = Math.floor(weather.main.temp_min);
-var maximumTemp = Math.floor(weather.main.temp_max);
-makeChart([minimumTemp, currentTemp, maximumTemp]);
+    // get hi, low, and current temperatures from inputted city
+    // remove decimals using Math.floor
+    // create an array and send to makeChart method 
+    var currentTemp = Math.floor(weather.main.temp);
+    var minimumTemp = Math.floor(weather.main.temp_min);
+    var maximumTemp = Math.floor(weather.main.temp_max);
+    makeChart([minimumTemp, currentTemp, maximumTemp]);
 
     
 }
 
-
-
-//---------------------------------------------------------------------------------------------------------
-// JS for Modal Help Box.  Adapted from W3Schools page.
-
+// JS for Modal Help Box.  Adapted from W3Schools.
 // Get the modal
 var modal = document.getElementById("myModal");
 
@@ -115,12 +111,9 @@ window.onclick = function(event) {
   }
 }
 
-//---------------------------------------------------------------------------------------------------------
-
-function makeChart(dataPoints)
+// Imported external library Chart.js to make a chart of daily temperatures
+function makeChart(tempData)
 {
-    // console.log(dataPoints);
-
     let myChart = document.getElementById('myChart').getContext('2d');
 
     // Global Options
@@ -133,9 +126,7 @@ function makeChart(dataPoints)
     data:{
         labels:['Low', 'Current', 'High'],
         datasets:[{
-        //label:'Daily Temperatures',
-        data: dataPoints,
-
+        data: tempData,
         backgroundColor:[
             'rgba(255, 99, 132, 0.6)',
             'rgba(54, 162, 235, 0.6)',
@@ -150,7 +141,7 @@ function makeChart(dataPoints)
     options:{
         title:{
         display:true,
-        text:'Daily Temperatures (°F)',
+        text:'Breakdown of Daily Temperatures (°F)',
         fontSize:25
         },
         legend:{
@@ -171,51 +162,10 @@ function makeChart(dataPoints)
             yAxes: [{
                 display: true,
                 ticks: {
-                    suggestedMin: 0,    // minimum will be 0, unless there is a lower value.
-                    // OR //
-                    // beginAtZero: true   // minimum value will be 0.
+                    suggestedMin: 0,    // minimum temp will be 0, unless there is a lower temp value.
                 }
             }]
         }
     }
     });
 }
-
-//---------------------------------------------------------------------------------------------------------
-// let myChart = document.getElementById('myChart').getContext('2d');
-
-// let barChart = new myChart(myChart, {
-//     type: 'bar', //bar, horizontalBar, pie, line, doughnut, radar, polarArea
-//     data:{
-//         labels: ['Min Temp', 'Current temp', 'Max temp'],
-//         datasets: [{
-//             label: 'Temperatures',
-//             data: [
-//                 weather.main.temp_min,
-//                 weather.weather[0].main,
-//                 weather.main.temp_max
-//             ]
-//         }]
-//     },
-//     //options{}
-// });
-
-
-
-
-//  $.getJSON("http://api.openweathermap.org/data/2.5/weather?q=" + city + "," + country + "&units=imperial&APPID=46a12c94ae0536aadb76d326ffa08d91", function(data) {
-//      console.log(data);
-
-//     var icon = "http://openweathermap.org/img/w/" + data.weather[0].icon + ".png";
-//     var temp = "Current Temperature: " + Math.floor(data.main.temp) + " degrees fahrenheit";
-//     var weather = "Current Weather: " + data.weather[0].main;
-
-    // console.log(icon);
-    // console.log(temp);
-    // console.log(weather);
-
-    // $("#city").append(city + ", " + country);
-//     $("#icon").attr('src', icon);
-//     $("#temp").append(temp);
-//     $("#weather").append(weather);
-// });
